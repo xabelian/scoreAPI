@@ -99,3 +99,12 @@ It uses **SQLite** as database engine.
 # Postman Collection
 
 The collection is found in the Prueba Backend .postman_collection file.
+
+# Demo users
+
+
+| user | type     | password                       |
+| :-------- | :------- | :-------------------------------- |
+| `profesor`      | `teacher` | `profesor` |
+| `estudiante`      | `user` | `estudiante` |
+| `admin`      | `superuser` | `admin` |
