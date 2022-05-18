@@ -95,3 +95,7 @@ scoreAPI uses:
 - tzdata 2022.1
 
 It uses **SQLite** as database engine.
+
+# Postman Collection
+
+The collection is found in the Prueba Backend .postman_collection file.
