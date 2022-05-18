@@ -68,11 +68,12 @@ class StudentAssignmentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = StudentAssignments
-        fields = ['assignment', 'score']
+        fields = ['assignment', 'score', 'comment']
     def create(self, validated_data):
         student_assignment = StudentAssignments.objects.create(
                 assignment = validated_data['assignment'],
-                student = self.context['request'].user
+                student = self.context['request'].user,
+                comment = validated_data['comment'],
             )
         return student_assignment
 

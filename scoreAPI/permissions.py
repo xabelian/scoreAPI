@@ -8,6 +8,7 @@ class TeacherRequired(permissions.BasePermission):
         if request.user.is_authenticated and request.user.is_teacher:
             return True
 
+
 class StudentRequired(permissions.BasePermission):
     """
     Custom permission class used in the Send Assignment view.

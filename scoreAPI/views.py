@@ -7,10 +7,12 @@ from rest_framework import permissions
 from scoreAPI.permissions import TeacherRequired, StudentRequired
 from django.contrib.auth import get_user_model 
 from scoreAPI.serializers import UserSerializer, AssignmentSerializer, TeacherSerializer, StudentAssignmentsSerializer
-
+from rest_framework.response import Response
 
 class CreateUserView(CreateAPIView):
-
+    """
+    Given username and password it creates a normal user (Student).
+    """
     model = get_user_model()
     permission_classes = [
         permissions.AllowAny 
@@ -18,7 +20,9 @@ class CreateUserView(CreateAPIView):
     serializer_class = UserSerializer
 
 class CreateTeacherView(CreateAPIView):
-
+    """
+    Given username and password it creates a Teacher.
+    """
     model = get_user_model()
     permission_classes = [
         permissions.AllowAny 
@@ -44,11 +48,20 @@ class CreateAssignment(CreateAPIView):
 
 
 class sendAssignment(generics.CreateAPIView):
+
     queryset = StudentAssignments.objects.all()
     serializer_class = StudentAssignmentsSerializer
-    permission_classes = [StudentRequired]
+    permission_classes = [
+        StudentRequired
+        ]
+
     def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        response = super().create(request, *args, **kwargs)
+        return Response({
+            'status': 200,
+            'message': 'Assignment send',
+            'data': response.data
+        })
 
 class gradeAssignment(generics.UpdateAPIView):
 
@@ -58,8 +71,12 @@ class gradeAssignment(generics.UpdateAPIView):
         TeacherRequired
     ]
     
-    def partial_update(self, request, *args, **kwargs):
-        return super().partial_update(request, *args, **kwargs)
-
+    def update(self, request, *args, **kwargs):
+        response = super().update(request, *args, **kwargs)
+        return Response({
+            'status': 200,
+            'message': 'Assignment graded!',
+            'data': response.data
+        })
 
 

@@ -36,7 +36,7 @@ class Assignment(models.Model):
     """
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     student = models.ManyToManyField(User, through='StudentAssignments')
-    title = models.CharField(max_length=20)
+    title = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     
 class StudentAssignments(models.Model):
@@ -47,6 +47,7 @@ class StudentAssignments(models.Model):
     """
     assignment = models.ForeignKey(Assignment, on_delete = models.CASCADE)
     student = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField(max_length=240, blank=True)
     score = models.IntegerField(null=True)
     upload_date = models.DateTimeField(default=now, blank=True)
 

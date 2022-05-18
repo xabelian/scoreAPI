@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "a2d032ee-393b-46e5-9567-fdbf02aaacb9",
+		"name": "Prueba de Conocimientos de Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student permissions required",
+			"item": [
+				{
+					"name": "Send/Upload assignment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher Permissions required",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Grade an assignment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Assignment",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
